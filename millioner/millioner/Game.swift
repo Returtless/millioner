@@ -17,7 +17,7 @@ class Game {
     private init() { }
     
     func addRecord(_ currentCount: Int, _ allCount: Int) {
-        self.records.append(Record(date: Date(), score: Double(currentCount/allCount)))
+        self.records.append(Record(date: Date(), score: Double(currentCount)/Double(allCount)))
     }
     
     func clearRecords() {
@@ -26,7 +26,7 @@ class Game {
 
 }
 
-struct Record {
+struct Record : Codable {
     let date: Date
     let score: Double
 }
