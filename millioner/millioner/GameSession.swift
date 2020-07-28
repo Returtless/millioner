@@ -9,10 +9,11 @@
 import Foundation
 
 class GameSession{
+    var questions: [Question] = []
     var currentQuestion : Int = 0
     var countRightAnswers: Int = 0
     var countAllQuestions : Int = 10
-    var hints : [Hints] = [.fiftyFifty, .friendsHelp, .hallHelp]
+    var hints : [Hints] = [.fiftyFifty, .hallHelp, .friendsHelp]
 }
 
 enum Hints : String{
