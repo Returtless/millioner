@@ -1,0 +1,6 @@
+framework module Pods_millioner {
+  umbrella header "Pods-millioner-umbrella.h"
+
+  export *
+  module * { export * }
+}
