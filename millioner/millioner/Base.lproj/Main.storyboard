@@ -15,21 +15,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0i9-fB-a3K">
-                                <rect key="frame" x="166" y="447" width="82" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Результаты"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ty8-Uv-wIf">
-                                <rect key="frame" x="182" y="409" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ty8-Uv-wIf">
+                                <rect key="frame" x="182" y="433" width="50" height="30"/>
                                 <state key="normal" title="Играть"/>
                                 <connections>
                                     <segue destination="7xW-vT-OrA" kind="show" id="w7D-Ik-os3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0i9-fB-a3K">
+                                <rect key="frame" x="166" y="483" width="82" height="30"/>
+                                <state key="normal" title="Результаты"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ty8-Uv-wIf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="08Y-vq-Dxp"/>
+                            <constraint firstItem="0i9-fB-a3K" firstAttribute="top" secondItem="Ty8-Uv-wIf" secondAttribute="bottom" constant="20" id="S4A-rN-Wzc"/>
+                            <constraint firstItem="0i9-fB-a3K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kWX-tu-1s8"/>
+                            <constraint firstItem="Ty8-Uv-wIf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ySY-YF-cTz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
