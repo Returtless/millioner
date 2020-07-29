@@ -60,7 +60,6 @@ class GameViewController: UIViewController {
         let third = Int.random(in: second...90)
         showInfo(message: "Зал проглосовал следующим образом: 1 - \(first)%, 2 - \(second-first)%, 3 - \(third - second)%, 4 - \(100-third)%", title: "Вы выбрали помощь зала")
         sender.isEnabled = false
-        
     }
     
     @IBAction func fiftyButtonWasTapped(_ sender: UIButton) {
@@ -94,15 +93,12 @@ class GameViewController: UIViewController {
             Game.shared.session?.currentQuestion+=1
             Game.shared.session?.countRightAnswers+=1
             if (Game.shared.session!.countRightAnswers == Game.shared.session!.countAllQuestions){
-                //self.dismiss(animated: true)
-                print("YOU WIN")
-                showInfo(message: "Ваш выигрыш составляет \(Game.shared.session!.countAllQuestions * 1000) рублей", title: "ВЫ ПОБЕДИЛИ")
+                showInfoWithDismiss(message: "Ваш выигрыш составляет \(Game.shared.session!.countAllQuestions * 1000) рублей", title: "ВЫ ПОБЕДИЛИ")
             } else {
                 updateQuestion()
             }
         } else {
-            showInfo(message: "Вы ничего не выиграли :(", title: "Game over")
-            //self.dismiss(animated: true)
+            showInfoWithDismiss(message: "Вы ничего не выиграли :(", title: "Game over")
         }
     }
     
@@ -120,11 +116,18 @@ class GameViewController: UIViewController {
     }
     func showInfo(message : String, title : String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    func showInfoWithDismiss(message : String, title : String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
             self.dismiss(animated: true)
         }))
         self.present(alert, animated: true)
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         Game.shared.addRecord(Game.shared.session!.countRightAnswers, Game.shared.session!.countAllQuestions)
         Game.shared.session = nil
