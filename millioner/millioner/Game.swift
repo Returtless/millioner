@@ -10,18 +10,11 @@ import Foundation
 
 class Game {
     var session: GameSession?
-    private(set) var records: [Record] {
-        didSet {
-            recordsCaretaker.save(records: self.records)
-        }
-    }
-    private let recordsCaretaker = RecordsCaretaker()
-    
+    private(set) var records: [Record] = []
+
     static let shared = Game()
     
-    private init() {
-        self.records = self.recordsCaretaker.retrieveRecords()
-    }
+    private init() { }
     
     func addRecord(_ currentCount: Int, _ allCount: Int) {
         self.records.append(Record(date: Date(), score: Double(currentCount)/Double(allCount)))
@@ -31,4 +24,9 @@ class Game {
         self.records = []
     }
 
+}
+
+struct Record : Codable {
+    let date: Date
+    let score: Double
 }

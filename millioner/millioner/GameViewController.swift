@@ -51,14 +51,20 @@ class GameViewController: UIViewController {
         checkButtonAndUpdateQuestion(for: 3)
     }
     @IBAction func friendButtonWasTapped(_ sender: UIButton) {
-        showInfo(message: "Альберт считает, что правильный ответ находится под номером \((Game.shared.session?.questions[Game.shared.session!.currentQuestion].id)!+1)", title: "Вы позвонили своему другу Эйнштейну")
+        let alert = UIAlertController(title: "Вы позвонили своему другу Эйнштейну", message: "Альберт считает, что правильный ответ находится под номером \((Game.shared.session?.questions[Game.shared.session!.currentQuestion].id)!+1)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
         sender.isEnabled = false
     }
     @IBAction func HallButtonWasTapped(_ sender: UIButton) {
+        
         let first = Int.random(in: 1...80)
         let second = Int.random(in: first...85)
         let third = Int.random(in: second...90)
-        showInfo(message: "Зал проглосовал следующим образом: 1 - \(first)%, 2 - \(second-first)%, 3 - \(third - second)%, 4 - \(100-third)%", title: "Вы выбрали помощь зала")
+        
+        let alert = UIAlertController(title: "Вы выбрали помощь зала", message: "Зал проглосовал следующим образом: 1 - \(first)%, 2 - \(second-first)%, 3 - \(third - second)%, 4 - \(100-third)%", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
         sender.isEnabled = false
         
     }
@@ -94,15 +100,15 @@ class GameViewController: UIViewController {
             Game.shared.session?.currentQuestion+=1
             Game.shared.session?.countRightAnswers+=1
             if (Game.shared.session!.countRightAnswers == Game.shared.session!.countAllQuestions){
-                //self.dismiss(animated: true)
+                self.dismiss(animated: true)
                 print("YOU WIN")
-                showInfo(message: "Ваш выигрыш составляет \(Game.shared.session!.countAllQuestions * 1000) рублей", title: "ВЫ ПОБЕДИЛИ")
             } else {
                 updateQuestion()
+                print("All is good")
             }
         } else {
-            showInfo(message: "Вы ничего не выиграли :(", title: "Game over")
-            //self.dismiss(animated: true)
+            self.dismiss(animated: true)
+            print("game over")
         }
     }
     
@@ -118,13 +124,7 @@ class GameViewController: UIViewController {
         self.answer3Button.isEnabled = true
         self.answer4Button.isEnabled = true
     }
-    func showInfo(message : String, title : String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true)
-        }))
-        self.present(alert, animated: true)
-    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         Game.shared.addRecord(Game.shared.session!.countRightAnswers, Game.shared.session!.countAllQuestions)
         Game.shared.session = nil
