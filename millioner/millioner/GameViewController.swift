@@ -70,31 +70,17 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func fiftyButtonWasTapped(_ sender: UIButton) {
-        var shuffledArray =  [0,1,2,3]
+//       var shuffledArray =  [1,2,3,4]
+//        shuffledArray.shuffle()
+//        var countHidden = 0
+//        for i in 0..<shuffledArray.count {
+//            if countHidden < 2 {
+//                
+//                if (shuffledArray[i] != )
+//            }
+//        }
         
-        shuffledArray.remove(at: shuffledArray.firstIndex(of: Game.shared.session!.questions[Game.shared.session!.currentQuestion].id)!)
-        shuffledArray.shuffle()
-        var countHidden = 0
-        for i in 0..<shuffledArray.count {
-            if countHidden < 2 {
-                switch shuffledArray[i] {
-                case 0:
-                    answer1Button.isEnabled = false
-                case 1:
-                    answer2Button.isEnabled = false
-                case 2:
-                    answer3Button.isEnabled = false
-                case 3:
-                    answer4Button.isEnabled = false
-                default:
-                    return
-                }
-                countHidden+=1
-            }
-        }
-        fiftyHintButton.isEnabled = false
     }
-    
     func checkButtonAndUpdateQuestion(for buttonNumber: Int){
         if Game.shared.session?.questions[Game.shared.session!.currentQuestion].id == buttonNumber {
             Game.shared.session?.currentQuestion+=1
@@ -119,15 +105,20 @@ class GameViewController: UIViewController {
         self.answer2Button.setTitle(Game.shared.session?.questions[Game.shared.session!.currentQuestion].answers[1], for: .normal)
         self.answer3Button.setTitle(Game.shared.session?.questions[Game.shared.session!.currentQuestion].answers[2], for: .normal)
         self.answer4Button.setTitle(Game.shared.session?.questions[Game.shared.session!.currentQuestion].answers[3], for: .normal)
-        self.answer1Button.isEnabled = true
-        self.answer2Button.isEnabled = true
-        self.answer3Button.isEnabled = true
-        self.answer4Button.isEnabled = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         Game.shared.addRecord(Game.shared.session!.countRightAnswers, Game.shared.session!.countAllQuestions)
         Game.shared.session = nil
     }
-
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
