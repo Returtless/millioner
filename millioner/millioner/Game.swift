@@ -30,5 +30,5 @@ class Game {
     func clearRecords() {
         self.records = []
     }
-    
+
 }

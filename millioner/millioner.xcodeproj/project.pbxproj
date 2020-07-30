@@ -79,44 +79,20 @@
 			children = (
 				52828DA224D0994700BA63B6 /* AppDelegate.swift */,
 				52828DA424D0994700BA63B6 /* SceneDelegate.swift */,
-				52828DC724D21C8500BA63B6 /* Models */,
-				52828DC624D21C3C00BA63B6 /* Controllers */,
-				52828DC824D21C9000BA63B6 /* Services */,
+				52828DB624D0A70F00BA63B6 /* Question.swift */,
+				52828DA624D0994700BA63B6 /* ViewController.swift */,
+				52828DC224D1DC4700BA63B6 /* DataService.swift */,
 				52828DA824D0994700BA63B6 /* Main.storyboard */,
+				52828DBA24D0B42500BA63B6 /* GameSession.swift */,
+				52828DBE24D1D26100BA63B6 /* RecordsTableViewController.swift */,
+				52828DC424D1DC7B00BA63B6 /* RecordsCaretaker.swift */,
+				52828DBC24D0B73F00BA63B6 /* Game.swift */,
 				52828DAB24D0994C00BA63B6 /* Assets.xcassets */,
+				52828DB824D0B25000BA63B6 /* GameViewController.swift */,
 				52828DAD24D0994C00BA63B6 /* LaunchScreen.storyboard */,
 				52828DB024D0994C00BA63B6 /* Info.plist */,
 			);
 			path = millioner;
-			sourceTree = "<group>";
-		};
-		52828DC624D21C3C00BA63B6 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				52828DA624D0994700BA63B6 /* ViewController.swift */,
-				52828DBE24D1D26100BA63B6 /* RecordsTableViewController.swift */,
-				52828DB824D0B25000BA63B6 /* GameViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		52828DC724D21C8500BA63B6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				52828DB624D0A70F00BA63B6 /* Question.swift */,
-				52828DBA24D0B42500BA63B6 /* GameSession.swift */,
-				52828DBC24D0B73F00BA63B6 /* Game.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		52828DC824D21C9000BA63B6 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				52828DC224D1DC4700BA63B6 /* DataService.swift */,
-				52828DC424D1DC7B00BA63B6 /* RecordsCaretaker.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		7F2449D7379AF520A2ABE30D /* Frameworks */ = {
