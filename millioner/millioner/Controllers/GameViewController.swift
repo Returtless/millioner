@@ -25,7 +25,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         self.changeHiddenStatus(to: true)
         activityIndicator.startAnimating()
-        Game.shared.session = GameSession()
         //добавляем обсервер для вопросов, чтобы отключить индикатор загрузки
         Game.shared.session?.questions.addObserver(self, options: [.new, .initial], closure: { [weak self] (current, _) in
             if current.count > 0{

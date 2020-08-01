@@ -16,9 +16,22 @@ class GameSession{
         questions.value.count
     }
     var hints : [Hints] = [.fiftyFifty, .hallHelp, .friendsHelp]
+    private var difficulty : Difficulty = .easy
     
-    init() {
-        DataService.getServerData(qType: 2,count: 5) { [weak self] array in
+    private var difficultyStrategy: GameDifficultyStrategy {
+        switch self.difficulty {
+        case .easy:
+            return EasyGameDifficultyStrategy()
+        case .medium:
+            return MediumGameDifficultyStrategy()
+        case .hard:
+            return HardGameDifficultyStrategy()
+        }
+    }
+    
+    init(by difficulty: Int) {
+        setDifficulty(diff: difficulty)
+        difficultyStrategy.getQuestions() { [weak self] array in
             guard let self = self else { return }
             self.questions.value.append(contentsOf: array!)
         }
@@ -27,6 +40,19 @@ class GameSession{
     func getCurrentQuestionNumber() -> String{
         return "Вопрос \(currentQuestion.value+1) из \(countAllQuestions)"
     }
+    
+    func setDifficulty(diff: Int) {
+        switch diff {
+           case 0:
+               self.difficulty = .easy
+           case 1:
+               self.difficulty = .medium
+           case 2:
+               self.difficulty = .hard
+           default:
+               self.difficulty = .easy
+           }
+    }
 }
 
 enum Hints : String{
@@ -34,3 +60,8 @@ enum Hints : String{
     case friendsHelp = "Звонок другу"
     case hallHelp = "Помощь зала"
 }
+
+enum Difficulty {
+    case easy, medium, hard
+}
+

@@ -46,15 +46,33 @@
                                     <action selector="addQuestionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MuB-l1-Uv6"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tUR-xe-Pgw">
+                                <rect key="frame" x="87.5" y="684" width="239" height="32"/>
+                                <segments>
+                                    <segment title="Легкий"/>
+                                    <segment title="Средний"/>
+                                    <segment title="Сложный"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уровень сложности" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zrc-wi-D52">
+                                <rect key="frame" x="128" y="643" width="158.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.77639769583599205" green="1" blue="0.96580688445736373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Ty8-Uv-wIf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="08Y-vq-Dxp"/>
+                            <constraint firstItem="tUR-xe-Pgw" firstAttribute="top" secondItem="Zrc-wi-D52" secondAttribute="bottom" constant="20" id="25C-fV-oOq"/>
                             <constraint firstItem="Ty8-Uv-wIf" firstAttribute="top" secondItem="SwJ-RF-dbf" secondAttribute="bottom" constant="20" id="4BV-2M-lkn"/>
                             <constraint firstItem="SwJ-RF-dbf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="592-OC-Jwf"/>
                             <constraint firstItem="mqt-kb-xOl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Pv-nN-Uue"/>
+                            <constraint firstItem="Zrc-wi-D52" firstAttribute="top" secondItem="mqt-kb-xOl" secondAttribute="bottom" constant="50" id="OJ9-ms-5mm"/>
                             <constraint firstItem="0i9-fB-a3K" firstAttribute="top" secondItem="Ty8-Uv-wIf" secondAttribute="bottom" constant="20" id="S4A-rN-Wzc"/>
+                            <constraint firstItem="tUR-xe-Pgw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d0s-f6-i1K"/>
                             <constraint firstItem="0i9-fB-a3K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kWX-tu-1s8"/>
+                            <constraint firstItem="Zrc-wi-D52" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vj9-tk-mMM"/>
                             <constraint firstItem="mqt-kb-xOl" firstAttribute="top" secondItem="0i9-fB-a3K" secondAttribute="bottom" constant="20" id="vxO-A8-A9R"/>
                             <constraint firstItem="Ty8-Uv-wIf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ySY-YF-cTz"/>
                         </constraints>
@@ -62,6 +80,7 @@
                     </view>
                     <connections>
                         <outlet property="addQuestionsButton" destination="mqt-kb-xOl" id="jsd-Xt-oOf"/>
+                        <outlet property="difficultyIndicator" destination="tUR-xe-Pgw" id="yoC-oW-C04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
