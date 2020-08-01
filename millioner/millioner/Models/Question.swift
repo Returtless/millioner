@@ -18,5 +18,13 @@ struct Question: Codable {
     var question: String
     var answers: [String]
     var id: Int
+    var difficulty: Int
+    
+    init(question: String = "", answers: [String] = [], id: Int = 0, difficulty: Int = 1) {
+        self.question = question
+        self.answers = answers
+        self.id = id
+        self.difficulty = difficulty
+    }
 }
 

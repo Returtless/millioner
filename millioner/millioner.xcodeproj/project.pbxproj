@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		19C154A5F7AE23B4D178CA40 /* Pods_millioner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACAD6F2E37CF2D4FFA96CEA /* Pods_millioner.framework */; };
+		52165D3E24D55590000F2CA1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D3D24D55590000F2CA1 /* AddQuestionsViewController.swift */; };
+		52165D4024D555BC000F2CA1 /* AddQuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D3F24D555BC000F2CA1 /* AddQuestionsTableViewCell.swift */; };
+		52165D4224D55EDC000F2CA1 /* QuestionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D4124D55EDC000F2CA1 /* QuestionsBuilder.swift */; };
+		52165D4424D56FD2000F2CA1 /* QuestionsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D4324D56FD2000F2CA1 /* QuestionsCaretaker.swift */; };
 		52828DA324D0994700BA63B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52828DA224D0994700BA63B6 /* AppDelegate.swift */; };
 		52828DA524D0994700BA63B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52828DA424D0994700BA63B6 /* SceneDelegate.swift */; };
 		52828DA724D0994700BA63B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52828DA624D0994700BA63B6 /* ViewController.swift */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52165D3D24D55590000F2CA1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionsViewController.swift; sourceTree = "<group>"; };
+		52165D3F24D555BC000F2CA1 /* AddQuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionsTableViewCell.swift; sourceTree = "<group>"; };
+		52165D4124D55EDC000F2CA1 /* QuestionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsBuilder.swift; sourceTree = "<group>"; };
+		52165D4324D56FD2000F2CA1 /* QuestionsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCaretaker.swift; sourceTree = "<group>"; };
 		52828D9F24D0994700BA63B6 /* millioner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = millioner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52828DA224D0994700BA63B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52828DA424D0994700BA63B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +91,7 @@
 				52828DC624D21C3C00BA63B6 /* Controllers */,
 				52828DC824D21C9000BA63B6 /* Services */,
 				52828DA824D0994700BA63B6 /* Main.storyboard */,
+				52165D4124D55EDC000F2CA1 /* QuestionsBuilder.swift */,
 				52828DAB24D0994C00BA63B6 /* Assets.xcassets */,
 				52828DAD24D0994C00BA63B6 /* LaunchScreen.storyboard */,
 				52828DB024D0994C00BA63B6 /* Info.plist */,
@@ -96,6 +105,8 @@
 				52828DA624D0994700BA63B6 /* ViewController.swift */,
 				52828DBE24D1D26100BA63B6 /* RecordsTableViewController.swift */,
 				52828DB824D0B25000BA63B6 /* GameViewController.swift */,
+				52165D3D24D55590000F2CA1 /* AddQuestionsViewController.swift */,
+				52165D3F24D555BC000F2CA1 /* AddQuestionsTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -115,6 +126,7 @@
 			children = (
 				52828DC224D1DC4700BA63B6 /* DataService.swift */,
 				52828DC424D1DC7B00BA63B6 /* RecordsCaretaker.swift */,
+				52165D4324D56FD2000F2CA1 /* QuestionsCaretaker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -252,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52828DC324D1DC4700BA63B6 /* DataService.swift in Sources */,
+				52165D4024D555BC000F2CA1 /* AddQuestionsTableViewCell.swift in Sources */,
 				52828DBF24D1D26100BA63B6 /* RecordsTableViewController.swift in Sources */,
 				52828DB924D0B25000BA63B6 /* GameViewController.swift in Sources */,
 				52828DA724D0994700BA63B6 /* ViewController.swift in Sources */,
@@ -260,6 +273,9 @@
 				52828DA324D0994700BA63B6 /* AppDelegate.swift in Sources */,
 				52828DBB24D0B42500BA63B6 /* GameSession.swift in Sources */,
 				52828DA524D0994700BA63B6 /* SceneDelegate.swift in Sources */,
+				52165D4424D56FD2000F2CA1 /* QuestionsCaretaker.swift in Sources */,
+				52165D3E24D55590000F2CA1 /* AddQuestionsViewController.swift in Sources */,
+				52165D4224D55EDC000F2CA1 /* QuestionsBuilder.swift in Sources */,
 				52828DC524D1DC7B00BA63B6 /* RecordsCaretaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
