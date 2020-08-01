@@ -71,7 +71,7 @@
         <!--Game View Controller-->
         <scene sceneID="BEM-iV-5mg">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="7xW-vT-OrA" customClass="GameViewController" customModule="millioner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="7xW-vT-OrA" customClass="GameViewController" customModule="millioner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nOK-EE-tgA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,6 +183,14 @@
                                     <constraint firstAttribute="width" constant="300" id="C5u-2P-09W"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zrg-Fp-e9l">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HRe-b2-l1r"/>
+                                    <constraint firstAttribute="width" constant="50" id="RgN-WE-DhA"/>
+                                </constraints>
+                                <color key="color" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.7760008034765834" green="1" blue="0.99897602127133511" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -190,10 +198,12 @@
                             <constraint firstItem="ZIn-NS-8Lo" firstAttribute="top" secondItem="yO2-k1-4eU" secondAttribute="bottom" constant="50" id="Ips-Nr-emI"/>
                             <constraint firstItem="yO2-k1-4eU" firstAttribute="centerX" secondItem="nOK-EE-tgA" secondAttribute="centerX" id="K7E-HK-RN1"/>
                             <constraint firstItem="BMW-BH-3WZ" firstAttribute="top" secondItem="vsZ-8f-bgc" secondAttribute="bottom" constant="8" id="WBU-ga-TJO"/>
+                            <constraint firstItem="zrg-Fp-e9l" firstAttribute="centerX" secondItem="nOK-EE-tgA" secondAttribute="centerX" id="bzV-wD-IEO"/>
                             <constraint firstItem="vsZ-8f-bgc" firstAttribute="trailing" secondItem="YIy-Ak-iNp" secondAttribute="trailing" id="eiz-4L-EL3"/>
                             <constraint firstItem="BMW-BH-3WZ" firstAttribute="leading" secondItem="YIy-Ak-iNp" secondAttribute="leading" id="jAx-ta-i1H"/>
                             <constraint firstItem="yO2-k1-4eU" firstAttribute="top" secondItem="BMW-BH-3WZ" secondAttribute="bottom" id="mT5-Mf-k9L"/>
                             <constraint firstItem="ZIn-NS-8Lo" firstAttribute="centerX" secondItem="nOK-EE-tgA" secondAttribute="centerX" id="mfP-QX-tLa"/>
+                            <constraint firstItem="zrg-Fp-e9l" firstAttribute="centerY" secondItem="nOK-EE-tgA" secondAttribute="centerY" id="raE-ne-OBf"/>
                             <constraint firstItem="YIy-Ak-iNp" firstAttribute="trailing" secondItem="BMW-BH-3WZ" secondAttribute="trailing" id="v17-xE-Kz7"/>
                             <constraint firstItem="vsZ-8f-bgc" firstAttribute="top" secondItem="YIy-Ak-iNp" secondAttribute="top" id="yf4-fp-DUc"/>
                         </constraints>
@@ -201,6 +211,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0nP-1R-JIO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="zrg-Fp-e9l" id="03q-y1-6sH"/>
                         <outlet property="answer1Button" destination="m4U-DE-gUC" id="78d-nC-ZdZ"/>
                         <outlet property="answer2Button" destination="QAE-gY-vHZ" id="h1P-ND-ozR"/>
                         <outlet property="answer3Button" destination="9Od-vh-jQB" id="sws-d6-Yb5"/>

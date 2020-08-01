@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
     @IBAction func startGameButtonTapped(_ sender: UIButton) {
         let questionsCaretaker = QuestionsCaretaker()
-        let questions = questionsCaretaker.retrieveQuestions()
+        _ = questionsCaretaker.retrieveQuestions()
         let gameVC = storyboard?.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         present(gameVC, animated: true, completion: nil)
     }

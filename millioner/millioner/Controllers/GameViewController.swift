@@ -19,21 +19,31 @@ class GameViewController: UIViewController {
     @IBOutlet weak var fiftyHintButton: UIButton!
     @IBOutlet weak var hallHintButton: UIButton!
     @IBOutlet weak var friendHintButton: UIButton!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.changeHiddenStatus(to: true)
+        activityIndicator.startAnimating()
         Game.shared.session = GameSession()
-        DataService.getServerData(qType: 2,count: 5) { [weak self] array in
-            guard let self = self else { return }
-            Game.shared.session?.questions.append(contentsOf: array!)
-            Game.shared.session?.countAllQuestions = array!.count
-            self.updateQuestion()
-        }
+        //добавляем обсервер для вопросов, чтобы отключить индикатор загрузки
+        Game.shared.session?.questions.addObserver(self, options: [.new, .initial], closure: { [weak self] (current, _) in
+            if current.count > 0{
+                self!.activityIndicator.stopAnimating()
+                self!.changeHiddenStatus(to: false)
+                Game.shared.session?.questions.removeObserver(self!)
+                self!.questionNumber.text = Game.shared.session!.getCurrentQuestionNumber()
+                self!.updateQuestion()
+            }
+        })
+        //добавляем обсервер на номер текущего вопроса
+        Game.shared.session?.currentQuestion.addObserver(self, options: [.new, .initial], closure: { [weak self] (current, _) in
+            self!.questionNumber.text = Game.shared.session!.getCurrentQuestionNumber()
+        })
+        
         self.fiftyHintButton.setTitle(Game.shared.session?.hints[0].rawValue, for: .normal)
         self.hallHintButton.setTitle(Game.shared.session?.hints[1].rawValue, for: .normal)
         self.friendHintButton.setTitle(Game.shared.session?.hints[2].rawValue, for: .normal)
-        //DataService.getServerData(qType: 3,count: 5)
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func answer1WasTapped(_ sender: UIButton) {
@@ -50,10 +60,12 @@ class GameViewController: UIViewController {
     @IBAction func answer4WasTapped(_ sender: UIButton) {
         checkButtonAndUpdateQuestion(for: 3)
     }
+    
     @IBAction func friendButtonWasTapped(_ sender: UIButton) {
-        showInfo(message: "Альберт считает, что правильный ответ находится под номером \((Game.shared.session?.questions[Game.shared.session!.currentQuestion].id)!+1)", title: "Вы позвонили своему другу Эйнштейну")
+        showInfo(message: "Альберт считает, что правильный ответ находится под номером \((Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].id)!+1)", title: "Вы позвонили своему другу Эйнштейну")
         sender.isEnabled = false
     }
+    
     @IBAction func HallButtonWasTapped(_ sender: UIButton) {
         let first = Int.random(in: 1...80)
         let second = Int.random(in: first...85)
@@ -65,7 +77,7 @@ class GameViewController: UIViewController {
     @IBAction func fiftyButtonWasTapped(_ sender: UIButton) {
         var shuffledArray =  [0,1,2,3]
         
-        shuffledArray.remove(at: shuffledArray.firstIndex(of: Game.shared.session!.questions[Game.shared.session!.currentQuestion].id)!)
+        shuffledArray.remove(at: shuffledArray.firstIndex(of: Game.shared.session!.questions.value[Game.shared.session!.currentQuestion.value].id)!)
         shuffledArray.shuffle()
         var countHidden = 0
         for i in 0..<shuffledArray.count {
@@ -89,8 +101,8 @@ class GameViewController: UIViewController {
     }
     
     func checkButtonAndUpdateQuestion(for buttonNumber: Int){
-        if Game.shared.session?.questions[Game.shared.session!.currentQuestion].id == buttonNumber {
-            Game.shared.session?.currentQuestion+=1
+        if Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].id == buttonNumber {
+            Game.shared.session?.currentQuestion.value+=1
             Game.shared.session?.countRightAnswers+=1
             if (Game.shared.session!.countRightAnswers == Game.shared.session!.countAllQuestions){
                 showInfoWithDismiss(message: "Ваш выигрыш составляет \(Game.shared.session!.countAllQuestions * 1000) рублей", title: "ВЫ ПОБЕДИЛИ")
@@ -103,12 +115,11 @@ class GameViewController: UIViewController {
     }
     
     func updateQuestion(){
-        self.questionNumber.text = "Вопрос \(Game.shared.session!.currentQuestion+1)"
-        self.questionText.text = Game.shared.session?.questions[Game.shared.session!.currentQuestion].question
-        self.answer1Button.setTitle(Game.shared.session?.questions[Game.shared.session!.currentQuestion].answers[0], for: .normal)
-        self.answer2Button.setTitle(Game.shared.session?.questions[Game.shared.session!.currentQuestion].answers[1], for: .normal)
-        self.answer3Button.setTitle(Game.shared.session?.questions[Game.shared.session!.currentQuestion].answers[2], for: .normal)
-        self.answer4Button.setTitle(Game.shared.session?.questions[Game.shared.session!.currentQuestion].answers[3], for: .normal)
+        self.questionText.text = Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].question
+        self.answer1Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[0], for: .normal)
+        self.answer2Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[1], for: .normal)
+        self.answer3Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[2], for: .normal)
+        self.answer4Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[3], for: .normal)
         self.answer1Button.isEnabled = true
         self.answer2Button.isEnabled = true
         self.answer3Button.isEnabled = true
@@ -131,6 +142,18 @@ class GameViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         Game.shared.addRecord(Game.shared.session!.countRightAnswers, Game.shared.session!.countAllQuestions)
         Game.shared.session = nil
+    }
+    
+    func changeHiddenStatus(to status: Bool){
+        self.answer1Button.isHidden = status
+        self.answer2Button.isHidden = status
+        self.answer3Button.isHidden = status
+        self.answer4Button.isHidden = status
+        self.fiftyHintButton.isHidden = status
+        self.hallHintButton.isHidden = status
+        self.friendHintButton.isHidden = status
+        self.questionNumber.isHidden = status
+        self.questionText.isHidden = status
     }
 
 }
