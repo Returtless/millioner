@@ -61,39 +61,29 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func friendButtonWasTapped(_ sender: UIButton) {
-        showInfo(message: "Альберт считает, что правильный ответ находится под номером \((Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].id)!+1)", title: "Вы позвонили своему другу Эйнштейну")
+        showInfo(message: Game.shared.session!.hintUsageFacade!.callFriend(), title: "Вы позвонили своему другу Эйнштейну")
         sender.isEnabled = false
     }
     
     @IBAction func HallButtonWasTapped(_ sender: UIButton) {
-        let first = Int.random(in: 1...80)
-        let second = Int.random(in: first...85)
-        let third = Int.random(in: second...90)
-        showInfo(message: "Зал проглосовал следующим образом: 1 - \(first)%, 2 - \(second-first)%, 3 - \(third - second)%, 4 - \(100-third)%", title: "Вы выбрали помощь зала")
+        showInfo(message: Game.shared.session!.hintUsageFacade!.useAuditoryHelp(), title: "Вы выбрали помощь зала")
         sender.isEnabled = false
     }
     
     @IBAction func fiftyButtonWasTapped(_ sender: UIButton) {
-        var shuffledArray =  [0,1,2,3]
-        
-        shuffledArray.remove(at: shuffledArray.firstIndex(of: Game.shared.session!.questions.value[Game.shared.session!.currentQuestion.value].id)!)
-        shuffledArray.shuffle()
-        var countHidden = 0
+        let shuffledArray = Game.shared.session!.hintUsageFacade!.use50to50Hint()
         for i in 0..<shuffledArray.count {
-            if countHidden < 2 {
-                switch shuffledArray[i] {
-                case 0:
-                    answer1Button.isEnabled = false
-                case 1:
-                    answer2Button.isEnabled = false
-                case 2:
-                    answer3Button.isEnabled = false
-                case 3:
-                    answer4Button.isEnabled = false
-                default:
-                    return
-                }
-                countHidden+=1
+            switch shuffledArray[i] {
+            case 0:
+                answer1Button.isEnabled = false
+            case 1:
+                answer2Button.isEnabled = false
+            case 2:
+                answer3Button.isEnabled = false
+            case 3:
+                answer4Button.isEnabled = false
+            default:
+                return
             }
         }
         fiftyHintButton.isEnabled = false
@@ -154,5 +144,5 @@ class GameViewController: UIViewController {
         self.questionNumber.isHidden = status
         self.questionText.isHidden = status
     }
-
+    
 }

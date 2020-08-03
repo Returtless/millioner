@@ -10,12 +10,19 @@ import Foundation
 
 class GameSession{
     var questions = Observable<[Question]>([])
-    var currentQuestion = Observable<Int>(0)
+    var currentQuestion = Observable<Int>(0) {
+        didSet{
+            hintUsageFacade = HintUsageFacade()
+            hintUsageFacade?.question = questions.value[currentQuestion.value]
+        }
+    }
     var countRightAnswers: Int = 0
     var countAllQuestions : Int {
         questions.value.count
     }
     var hints : [Hints] = [.fiftyFifty, .hallHelp, .friendsHelp]
+    var hintUsageFacade : HintUsageFacade?
+    
     private var difficulty : Difficulty = .easy
     
     private var difficultyStrategy: GameDifficultyStrategy {

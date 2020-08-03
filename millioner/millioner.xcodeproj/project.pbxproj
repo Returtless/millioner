@@ -13,6 +13,7 @@
 		52165D4224D55EDC000F2CA1 /* QuestionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D4124D55EDC000F2CA1 /* QuestionsBuilder.swift */; };
 		52165D4424D56FD2000F2CA1 /* QuestionsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D4324D56FD2000F2CA1 /* QuestionsCaretaker.swift */; };
 		52165D4624D59109000F2CA1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D4524D59109000F2CA1 /* Observable.swift */; };
+		52165D4824D5B4F7000F2CA1 /* HintUsageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52165D4724D5B4F7000F2CA1 /* HintUsageFacade.swift */; };
 		52828DA324D0994700BA63B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52828DA224D0994700BA63B6 /* AppDelegate.swift */; };
 		52828DA524D0994700BA63B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52828DA424D0994700BA63B6 /* SceneDelegate.swift */; };
 		52828DA724D0994700BA63B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52828DA624D0994700BA63B6 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		52165D4124D55EDC000F2CA1 /* QuestionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsBuilder.swift; sourceTree = "<group>"; };
 		52165D4324D56FD2000F2CA1 /* QuestionsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCaretaker.swift; sourceTree = "<group>"; };
 		52165D4524D59109000F2CA1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		52165D4724D5B4F7000F2CA1 /* HintUsageFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintUsageFacade.swift; sourceTree = "<group>"; };
 		52828D9F24D0994700BA63B6 /* millioner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = millioner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52828DA224D0994700BA63B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52828DA424D0994700BA63B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				52828DB624D0A70F00BA63B6 /* Question.swift */,
 				52828DBA24D0B42500BA63B6 /* GameSession.swift */,
 				52828DBC24D0B73F00BA63B6 /* Game.swift */,
+				52165D4724D5B4F7000F2CA1 /* HintUsageFacade.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				52828DBB24D0B42500BA63B6 /* GameSession.swift in Sources */,
 				52828DA524D0994700BA63B6 /* SceneDelegate.swift in Sources */,
 				52165D4424D56FD2000F2CA1 /* QuestionsCaretaker.swift in Sources */,
+				52165D4824D5B4F7000F2CA1 /* HintUsageFacade.swift in Sources */,
 				52165D3E24D55590000F2CA1 /* AddQuestionsViewController.swift in Sources */,
 				52165D4224D55EDC000F2CA1 /* QuestionsBuilder.swift in Sources */,
 				52828DC524D1DC7B00BA63B6 /* RecordsCaretaker.swift in Sources */,
