@@ -10,12 +10,7 @@ import Foundation
 
 class GameSession{
     var questions = Observable<[Question]>([])
-    var currentQuestion = Observable<Int>(0) {
-        didSet{
-            hintUsageFacade = HintUsageFacade()
-            hintUsageFacade?.question = questions.value[currentQuestion.value]
-        }
-    }
+    var currentQuestion = Observable<Int>(0)
     var countRightAnswers: Int = 0
     var countAllQuestions : Int {
         questions.value.count
@@ -41,7 +36,14 @@ class GameSession{
         difficultyStrategy.getQuestions() { [weak self] array in
             guard let self = self else { return }
             self.questions.value.append(contentsOf: array!)
+                        self.currentQuestion.value = 0
         }
+        currentQuestion.addObserver(self, options: [.new, .initial], closure: { [weak self] (current, _) in
+            if self!.currentQuestion.value < self!.countAllQuestions {
+                self!.hintUsageFacade = HintUsageFacade()
+                self!.hintUsageFacade?.question = self!.questions.value[self!.currentQuestion.value]
+            }
+        })
     }
     
     func getCurrentQuestionNumber() -> String{

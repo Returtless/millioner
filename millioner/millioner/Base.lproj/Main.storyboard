@@ -231,15 +231,15 @@
                     <navigationItem key="navigationItem" id="0nP-1R-JIO"/>
                     <connections>
                         <outlet property="activityIndicator" destination="zrg-Fp-e9l" id="03q-y1-6sH"/>
-                        <outlet property="answer1Button" destination="m4U-DE-gUC" id="78d-nC-ZdZ"/>
-                        <outlet property="answer2Button" destination="QAE-gY-vHZ" id="h1P-ND-ozR"/>
-                        <outlet property="answer3Button" destination="9Od-vh-jQB" id="sws-d6-Yb5"/>
-                        <outlet property="answer4Button" destination="5nz-h8-JCu" id="Ztt-1y-xwA"/>
                         <outlet property="fiftyHintButton" destination="l0X-8X-YnQ" id="5kR-un-nYt"/>
                         <outlet property="friendHintButton" destination="asq-DQ-yby" id="JES-9W-nPd"/>
                         <outlet property="hallHintButton" destination="PHt-9X-rX5" id="aN5-sA-VVk"/>
                         <outlet property="questionNumber" destination="vsZ-8f-bgc" id="XwF-CL-X3a"/>
                         <outlet property="questionText" destination="BMW-BH-3WZ" id="mEB-Wr-0jB"/>
+                        <outletCollection property="answerButtons" destination="m4U-DE-gUC" collectionClass="NSMutableArray" id="K8t-a7-RWQ"/>
+                        <outletCollection property="answerButtons" destination="QAE-gY-vHZ" collectionClass="NSMutableArray" id="JQF-Nh-wVA"/>
+                        <outletCollection property="answerButtons" destination="9Od-vh-jQB" collectionClass="NSMutableArray" id="GjW-14-Kws"/>
+                        <outletCollection property="answerButtons" destination="5nz-h8-JCu" collectionClass="NSMutableArray" id="2V7-Sj-lPm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bV2-eE-AiY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

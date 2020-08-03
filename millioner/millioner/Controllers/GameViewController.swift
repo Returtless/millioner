@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var hallHintButton: UIButton!
     @IBOutlet weak var friendHintButton: UIButton!
     
+    @IBOutlet var answerButtons: [UIButton]!
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,20 +75,14 @@ class GameViewController: UIViewController {
     @IBAction func fiftyButtonWasTapped(_ sender: UIButton) {
         let shuffledArray = Game.shared.session!.hintUsageFacade!.use50to50Hint()
         for i in 0..<shuffledArray.count {
-            switch shuffledArray[i] {
-            case 0:
-                answer1Button.isEnabled = false
-            case 1:
-                answer2Button.isEnabled = false
-            case 2:
-                answer3Button.isEnabled = false
-            case 3:
-                answer4Button.isEnabled = false
-            default:
-                return
-            }
+           configureButton(button: answerButtons[i], index: i, state: false)
         }
         fiftyHintButton.isEnabled = false
+    }
+    
+    func configureButton(button: UIButton, index: Int, state: Bool) {
+        button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[index], for: .normal)
+        button.isEnabled = state
     }
     
     func checkButtonAndUpdateQuestion(for buttonNumber: Int){
@@ -105,14 +101,9 @@ class GameViewController: UIViewController {
     
     func updateQuestion(){
         self.questionText.text = Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].question
-        self.answer1Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[0], for: .normal)
-        self.answer2Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[1], for: .normal)
-        self.answer3Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[2], for: .normal)
-        self.answer4Button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[3], for: .normal)
-        self.answer1Button.isEnabled = true
-        self.answer2Button.isEnabled = true
-        self.answer3Button.isEnabled = true
-        self.answer4Button.isEnabled = true
+        for (index, button) in answerButtons.enumerated() {
+            configureButton(button: button, index: index, state: true)
+        }
     }
     func showInfo(message : String, title : String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -134,10 +125,7 @@ class GameViewController: UIViewController {
     }
     
     func changeHiddenStatus(to status: Bool){
-        self.answer1Button.isHidden = status
-        self.answer2Button.isHidden = status
-        self.answer3Button.isHidden = status
-        self.answer4Button.isHidden = status
+        changeHideStatusButtons(state: status)
         self.fiftyHintButton.isHidden = status
         self.hallHintButton.isHidden = status
         self.friendHintButton.isHidden = status
@@ -145,4 +133,9 @@ class GameViewController: UIViewController {
         self.questionText.isHidden = status
     }
     
+    func changeHideStatusButtons(state: Bool) {
+        for button in answerButtons.enumerated() {
+            button.element.isHidden = state
+        }
+    }
 }

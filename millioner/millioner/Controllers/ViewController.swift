@@ -24,8 +24,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startGameButtonTapped(_ sender: UIButton) {
-        let questionsCaretaker = QuestionsCaretaker()
-        _ = questionsCaretaker.retrieveQuestions()
         let gameVC = storyboard?.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         Game.shared.session = GameSession(by: difficultyIndicator.selectedSegmentIndex)
         present(gameVC, animated: true, completion: nil)
