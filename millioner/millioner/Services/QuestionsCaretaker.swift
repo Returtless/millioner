@@ -17,7 +17,9 @@ final class QuestionsCaretaker {
     
     func save(questions: [Question]) {
         do {
-            let data = try self.encoder.encode(questions)
+            var oldQuestions = retrieveQuestions()
+            oldQuestions.append(contentsOf: questions)
+            let data = try self.encoder.encode(oldQuestions)
             UserDefaults.standard.set(data, forKey: key)
         } catch {
             print(error)

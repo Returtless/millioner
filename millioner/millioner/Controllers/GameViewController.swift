@@ -12,10 +12,6 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var questionNumber: UILabel!
     @IBOutlet weak var questionText: UILabel!
-    @IBOutlet weak var answer1Button: UIButton!
-    @IBOutlet weak var answer2Button: UIButton!
-    @IBOutlet weak var answer3Button: UIButton!
-    @IBOutlet weak var answer4Button: UIButton!
     @IBOutlet weak var fiftyHintButton: UIButton!
     @IBOutlet weak var hallHintButton: UIButton!
     @IBOutlet weak var friendHintButton: UIButton!
@@ -41,25 +37,13 @@ class GameViewController: UIViewController {
         Game.shared.session?.currentQuestion.addObserver(self, options: [.new, .initial], closure: { [weak self] (current, _) in
             self!.questionNumber.text = Game.shared.session!.getCurrentQuestionNumber()
         })
-        
         self.fiftyHintButton.setTitle(Game.shared.session?.hints[0].rawValue, for: .normal)
         self.hallHintButton.setTitle(Game.shared.session?.hints[1].rawValue, for: .normal)
         self.friendHintButton.setTitle(Game.shared.session?.hints[2].rawValue, for: .normal)
     }
     
-    @IBAction func answer1WasTapped(_ sender: UIButton) {
-        checkButtonAndUpdateQuestion(for: 0)
-    }
-    @IBAction func answer2WasTapped(_ sender: UIButton) {
-        checkButtonAndUpdateQuestion(for: 1)
-    }
-    
-    @IBAction func answer3WasTapped(_ sender: UIButton) {
-        checkButtonAndUpdateQuestion(for: 2)
-    }
-    
     @IBAction func answer4WasTapped(_ sender: UIButton) {
-        checkButtonAndUpdateQuestion(for: 3)
+        checkButtonAndUpdateQuestion(for: answerButtons.firstIndex(of: sender)!)
     }
     
     @IBAction func friendButtonWasTapped(_ sender: UIButton) {
@@ -80,22 +64,17 @@ class GameViewController: UIViewController {
         fiftyHintButton.isEnabled = false
     }
     
-    func configureButton(button: UIButton, index: Int, state: Bool) {
-        button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[index], for: .normal)
-        button.isEnabled = state
-    }
-    
     func checkButtonAndUpdateQuestion(for buttonNumber: Int){
         if Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].id == buttonNumber {
             Game.shared.session?.currentQuestion.value+=1
             Game.shared.session?.countRightAnswers+=1
             if (Game.shared.session!.countRightAnswers == Game.shared.session!.countAllQuestions){
-                showInfoWithDismiss(message: "Ваш выигрыш составляет \(Game.shared.session!.countAllQuestions * 1000) рублей", title: "ВЫ ПОБЕДИЛИ")
+                showInfo(message: "Ваш выигрыш составляет \(Game.shared.session!.countAllQuestions * 1000) рублей", title: "ВЫ ПОБЕДИЛИ", dismiss: true)
             } else {
                 updateQuestion()
             }
         } else {
-            showInfoWithDismiss(message: "Вы ничего не выиграли :(", title: "Game over")
+            showInfo(message: "Вы ничего не выиграли :(", title: "Game over", dismiss: true)
         }
     }
     
@@ -105,17 +84,21 @@ class GameViewController: UIViewController {
             configureButton(button: button, index: index, state: true)
         }
     }
-    func showInfo(message : String, title : String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true)
+    
+    func configureButton(button: UIButton, index: Int, state: Bool) {
+        button.setTitle(Game.shared.session?.questions.value[Game.shared.session!.currentQuestion.value].answers[index], for: .normal)
+        button.isEnabled = state
     }
     
-    func showInfoWithDismiss(message : String, title : String){
+    func showInfo(message : String, title : String, dismiss: Bool = false){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true)
-        }))
+        if dismiss{
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                self.dismiss(animated: true)
+            }))
+        } else {
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+        }
         self.present(alert, animated: true)
     }
     

@@ -121,7 +121,7 @@
                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="answer1WasTapped:" destination="7xW-vT-OrA" eventType="touchUpInside" id="Xgi-6x-n84"/>
+                                            <action selector="answer4WasTapped:" destination="7xW-vT-OrA" eventType="touchUpInside" id="Nuq-Py-Rea"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAE-gY-vHZ">
@@ -129,7 +129,7 @@
                                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="answer2WasTapped:" destination="7xW-vT-OrA" eventType="touchUpInside" id="G67-8h-aT3"/>
+                                            <action selector="answer4WasTapped:" destination="7xW-vT-OrA" eventType="touchUpInside" id="ab5-g3-tzD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Od-vh-jQB">
@@ -137,7 +137,7 @@
                                         <color key="backgroundColor" red="0.79198620080137216" green="1" blue="0.40011218038171747" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="answer3WasTapped:" destination="7xW-vT-OrA" eventType="touchUpInside" id="waE-bg-JRx"/>
+                                            <action selector="answer4WasTapped:" destination="7xW-vT-OrA" eventType="touchUpInside" id="hdH-oA-35X"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nz-h8-JCu">
@@ -285,7 +285,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="answer1TextChanged:" destination="gTI-DQ-jGv" eventType="valueChanged" id="N4q-76-0M4"/>
                                                         <action selector="answer1TextChanged:" destination="gTI-DQ-jGv" eventType="editingChanged" id="d0Z-a4-tJY"/>
                                                     </connections>
                                                 </textField>
@@ -297,8 +296,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="answer2TextChanged:" destination="gTI-DQ-jGv" eventType="valueChanged" id="JD9-sK-ds3"/>
-                                                        <action selector="answer3TextChanged:" destination="gTI-DQ-jGv" eventType="editingChanged" id="L4X-KO-Ksr"/>
+                                                        <action selector="answer1TextChanged:" destination="gTI-DQ-jGv" eventType="editingDidEnd" id="vMs-vL-UsT"/>
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q3e-Jq-QRg">
@@ -309,8 +307,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="answer3TextChanged:" destination="gTI-DQ-jGv" eventType="editingChanged" id="Nao-Bj-uTJ"/>
-                                                        <action selector="answer3TextChanged:" destination="gTI-DQ-jGv" eventType="valueChanged" id="Qhr-l9-bP4"/>
+                                                        <action selector="answer1TextChanged:" destination="gTI-DQ-jGv" eventType="editingDidEnd" id="wwc-eS-Cwz"/>
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Вариант 4" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nMh-PR-rPN">
@@ -321,8 +318,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="answer4TextChanged:" destination="gTI-DQ-jGv" eventType="editingChanged" id="bPT-1H-OY4"/>
-                                                        <action selector="answer4TextChanged:" destination="gTI-DQ-jGv" eventType="valueChanged" id="uSN-as-XAC"/>
+                                                        <action selector="answer1TextChanged:" destination="gTI-DQ-jGv" eventType="editingDidEnd" id="bgm-US-vHK"/>
                                                     </connections>
                                                 </textField>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0NX-ga-hB3">
@@ -468,7 +464,7 @@
         <scene sceneID="lIv-yY-EGJ">
             <objects>
                 <tableViewController title="Рекорды" id="iyR-o6-vay" customClass="RecordsTableViewController" customModule="millioner" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0dr-fB-lv3">
+                    <tableView key="view" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0dr-fB-lv3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

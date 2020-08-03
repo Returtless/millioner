@@ -16,7 +16,7 @@ class GameSession{
         questions.value.count
     }
     var hints : [Hints] = [.fiftyFifty, .hallHelp, .friendsHelp]
-    var hintUsageFacade : HintUsageFacade?
+    private(set) var hintUsageFacade : HintUsageFacade?
     
     private var difficulty : Difficulty = .easy
     
@@ -36,7 +36,7 @@ class GameSession{
         difficultyStrategy.getQuestions() { [weak self] array in
             guard let self = self else { return }
             self.questions.value.append(contentsOf: array!)
-                        self.currentQuestion.value = 0
+            self.currentQuestion.value = 0
         }
         currentQuestion.addObserver(self, options: [.new, .initial], closure: { [weak self] (current, _) in
             if self!.currentQuestion.value < self!.countAllQuestions {
@@ -52,15 +52,15 @@ class GameSession{
     
     func setDifficulty(diff: Int) {
         switch diff {
-           case 0:
-               self.difficulty = .easy
-           case 1:
-               self.difficulty = .medium
-           case 2:
-               self.difficulty = .hard
-           default:
-               self.difficulty = .easy
-           }
+        case 0:
+            self.difficulty = .easy
+        case 1:
+            self.difficulty = .medium
+        case 2:
+            self.difficulty = .hard
+        default:
+            self.difficulty = .easy
+        }
     }
 }
 

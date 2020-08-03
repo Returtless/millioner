@@ -19,7 +19,7 @@ class HintUsageFacade{
         let first = Int.random(in: 1...80)
         let second = Int.random(in: first...85)
         let third = Int.random(in: second...90)
-        return "Зал проглосовал следующим образом: 1 - \(first)%, 2 - \(second-first)%, 3 - \(third - second)%, 4 - \(100-third)%"
+        return "Зал проголосовал следующим образом: 1 - \(first)%, 2 - \(second-first)%, 3 - \(third - second)%, 4 - \(100-third)%"
     }
     
     func use50to50Hint() -> [Int] {

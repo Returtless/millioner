@@ -26,7 +26,11 @@ class AddQuestionsTableViewCell: UITableViewCell {
             questionBuilder = QuestionsBuilder()
         }
     }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -43,18 +47,6 @@ class AddQuestionsTableViewCell: UITableViewCell {
     }
     
     @IBAction func answer1TextChanged(_ sender: UITextField) {
-        questionBuilder!.addAnswer(sender.text!)
-    }
-    
-    @IBAction func answer2TextChanged(_ sender: UITextField) {
-        questionBuilder!.addAnswer(sender.text!)
-    }
-    
-    @IBAction func answer3TextChanged(_ sender: UITextField) {
-        questionBuilder!.addAnswer(sender.text!)
-    }
-    
-    @IBAction func answer4TextChanged(_ sender: UITextField) {
         questionBuilder!.addAnswer(sender.text!)
     }
     
